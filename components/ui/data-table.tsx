@@ -23,7 +23,8 @@ import { ScrollArea, ScrollBar } from './scroll-area';
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
-  searchKey: string;
+  searchKey?: string;
+  showSearch?: boolean;
 }
 
 export function DataTable<TData, TValue>({
@@ -41,16 +42,21 @@ export function DataTable<TData, TValue>({
   /* this can be used to get the selectedrows 
   console.log("value", table.getFilteredSelectedRowModel()); */
 
+  const showSearch = !!searchKey;
+
   return (
     <>
-      <Input
-        placeholder={`Search ${searchKey}...`}
-        value={(table.getColumn(searchKey)?.getFilterValue() as string) ?? ''}
-        onChange={(event) =>
-          table.getColumn(searchKey)?.setFilterValue(event.target.value)
-        }
-        className="w-full md:max-w-sm"
-      />
+      {showSearch && (
+        <Input
+          placeholder={`Search ${searchKey}...`}
+          value={(table.getColumn(searchKey)?.getFilterValue() as string) ?? ''}
+          onChange={(event) =>
+            table.getColumn(searchKey)?.setFilterValue(event.target.value)
+          }
+          className="w-full md:max-w-sm"
+        />
+      )}
+
       <ScrollArea className="h-[calc(80vh-220px)] rounded-md border md:h-[calc(80dvh-200px)]">
         <Table className="relative">
           <TableHeader>
@@ -58,7 +64,7 @@ export function DataTable<TData, TValue>({
               <TableRow key={headerGroup.id}>
                 {headerGroup.headers.map((header) => {
                   return (
-                    <TableHead key={header.id}>
+                    <TableHead className="sticky top-0 z-[50]" key={header.id}>
                       {header.isPlaceholder
                         ? null
                         : flexRender(
@@ -105,7 +111,7 @@ export function DataTable<TData, TValue>({
       <div className="flex items-center justify-end space-x-2 py-4">
         <div className="flex-1 text-sm text-muted-foreground">
           {table.getFilteredSelectedRowModel().rows.length} of{' '}
-          {table.getFilteredRowModel().rows.length} row(s) selected.
+          {table.getFilteredRowModel().rows.length} fila(s) seleccionadas.
         </div>
         <div className="space-x-2">
           <Button
@@ -114,7 +120,7 @@ export function DataTable<TData, TValue>({
             onClick={() => table.previousPage()}
             disabled={!table.getCanPreviousPage()}
           >
-            Previous
+            Anterior
           </Button>
           <Button
             variant="outline"
@@ -122,7 +128,7 @@ export function DataTable<TData, TValue>({
             onClick={() => table.nextPage()}
             disabled={!table.getCanNextPage()}
           >
-            Next
+            Siguiente
           </Button>
         </div>
       </div>

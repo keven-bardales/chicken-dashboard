@@ -23,12 +23,16 @@ import {
   Plus,
   Settings,
   SunMedium,
+  Table,
   Trash,
   Twitter,
   User,
   User2Icon,
   UserX2Icon,
-  X
+  X,
+  Calendar,
+  Box,
+  Columns
 } from 'lucide-react';
 
 export type Icon = LucideIcon;
@@ -78,5 +82,9 @@ export const Icons = {
     </svg>
   ),
   twitter: Twitter,
-  check: Check
+  check: Check,
+  table: Table,
+  'calendar-arrow-up': Calendar,
+  box: Box,
+  columns: Columns
 };

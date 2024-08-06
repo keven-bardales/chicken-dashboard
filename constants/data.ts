@@ -118,28 +118,29 @@ export const navItems: NavItem[] = [
     label: 'Dashboard'
   },
   {
-    title: 'User',
-    href: '/dashboard/user',
-    icon: 'user',
-    label: 'user'
+    title: 'Escenarios de producción',
+    href: '/dashboard/scenarios',
+    icon: 'calendar-arrow-up',
+    label: 'Escemarios de producción'
+  },
+
+  {
+    title: 'Tablas alimenticias',
+    href: '/dashboard/feed-tables',
+    icon: 'table',
+    label: 'Tablas alimenticias'
   },
   {
-    title: 'Employee',
-    href: '/dashboard/employee',
-    icon: 'employee',
-    label: 'employee'
+    title: 'Insumos',
+    href: '/dashboard/supplies',
+    icon: 'box',
+    label: 'Insumos'
   },
   {
-    title: 'Profile',
-    href: '/dashboard/profile',
-    icon: 'profile',
-    label: 'profile'
-  },
-  {
-    title: 'Kanban',
-    href: '/dashboard/kanban',
-    icon: 'kanban',
-    label: 'kanban'
+    title: 'Tipos de insumos',
+    href: '/dashboard/supplies-types',
+    icon: 'columns',
+    label: 'Insumos'
   },
   {
     title: 'Login',
