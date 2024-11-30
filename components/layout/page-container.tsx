@@ -8,9 +8,11 @@ export default function PageContainer({
   children: React.ReactNode;
   scrollable?: boolean;
 }) {
+  let canScroll = scrollable ? scrollable : true;
+
   return (
     <>
-      {scrollable ? (
+      {canScroll ? (
         <ScrollArea className="h-[calc(100dvh-52px)]">
           <div className="h-full  p-4 md:px-8">{children}</div>
         </ScrollArea>
